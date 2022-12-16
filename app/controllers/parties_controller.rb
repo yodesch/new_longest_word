@@ -11,7 +11,6 @@ class PartiesController < ApplicationController
     @letters = params[:letters].split
     @word = (params[:word] || "").upcase
     @included = included?(@word, @letters)
-    @french_word = french_word?(@word)
   end
 
   private
@@ -19,12 +18,4 @@ class PartiesController < ApplicationController
   def included?(word, letters)
     word.chars.all? { |letter| word.count(letter) <= letters.count(letter) }
   end
-
-  def french_word?(word)
-    response = URI.open("https://www.freelang.com/dictionnaire/dic-francais.php#{word}")
-    json = JSON.parse(response.read)
-    json['found']
-  end
-end
-
 end
