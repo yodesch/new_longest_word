@@ -1,7 +1,8 @@
 <h1>Resultat</h1>
 
-<% if @included %>
-    <p><strong>Félicitations!</strong> <%= @word %> Ce mot existe!</p>
+<% if @available %>
+    <p><strong>Félicitations!</strong> <%= @word %> Ce mot existe et a une longueur de <%= @word.length %> lettres !
+    </p>
   <% else %>
     <p>Désolé <strong><%= @word %></strong> ne semble pas être un mot français</p>
 <% end %>

@@ -2,7 +2,7 @@
   <h1>Nouvelle partie</h1>
 
   <ul class="letters">
-    <% @letters.each do |letter| %>
+    <% @ten_list_letters.each do |letter| %>
       <li><%= letter %></li>
     <% end %>
   </ul>
@@ -14,7 +14,7 @@
     <%= hidden_field_tag :letters, @letters %>
     <div class="input-group">
       <input type="text" name="word" class="form-control">
-      <input type="submit" value="Play" class="btn btn-primary">
+      <input type="submit" value="Joue" class="btn btn-primary">
     </div>
   </form>
 </div>

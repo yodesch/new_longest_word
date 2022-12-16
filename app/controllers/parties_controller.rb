@@ -2,20 +2,20 @@ class PartiesController < ApplicationController
   VOWELS = %w(A E I O U Y)
 
   def new
-    @letters = Array.new(5) { VOWELS.sample }
-    @letters += Array.new(5) { (('A'..'Z').to_a - VOWELS).sample }
-    @letters.shuffle!
+    @ten_list_letters = Array.new(5) { VOWELS.sample }
+    @ten_list_letters += Array.new(5) { (('A'..'Z').to_a - VOWELS).sample }
+    @ten_list_letters.shuffle!
   end
 
   def score
-    @letters = params[:letters].split
+    @ten_list_letters = params[:letters].split
     @word = (params[:word] || "").upcase
-    @included = included?(@word, @letters)
+    @available = available?(@word, @ten_list_letters)
   end
 
   private
 
-  def included?(word, letters)
+  def available?(word, letters)
     word.chars.all? { |letter| word.count(letter) <= letters.count(letter) }
   end
 end
